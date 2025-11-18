@@ -1,0 +1,170 @@
+/* Importa as novas fontes */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+    --bg-dark: #121212; /* Fundo muito escuro */
+    --primary-glow: #00FFFF; /* Ciano/Azul claro (o brilho holográfico) */
+    --secondary-blue: #0A6990; /* Azul escuro secundário */
+    --text-mono: 'Share Tech Mono', monospace;
+    --text-header: 'Orbitron', sans-serif;
+    --color-online: #4CAF50;
+    --color-processing: #FFEB3B;
+    --color-alert: #F44336;
+}
+
+body {
+    margin: 0;
+    font-family: var(--text-mono);
+    background-color: var(--bg-dark);
+    color: var(--primary-glow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* CONTAINER GERAL (O "Console") */
+.lab-container {
+    background-color: #1a1a1a;
+    border: 2px solid var(--secondary-blue);
+    /* Efeito de brilho sutil */
+    box-shadow: 0 0 15px var(--primary-glow); 
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+/* CABEÇALHO */
+.lab-header {
+    background-color: var(--secondary-blue);
+    color: var(--bg-dark); /* Texto escuro no fundo brilhante */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-glow);
+    font-family: var(--text-header);
+    text-transform: uppercase;
+}
+
+.lab-header h1 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.header-icon {
+    display: inline-block;
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--bg-dark);
+    background-color: var(--primary-glow);
+    transform: rotate(45deg); /* Ícone de diamante/ponto */
+}
+
+/* Indicadores de Status (Similares aos botões de controle) */
+.status-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--bg-dark);
+}
+.indicator.online { background-color: var(--color-online); }
+.indicator.processing { background-color: var(--color-processing); }
+.indicator.alert { background-color: var(--color-alert); }
+
+/* TELA PRINCIPAL (MAIN SCREEN) */
+.lab-screen {
+    padding: 30px 20px;
+    min-height: 350px;
+    /* Linhas de terminal no fundo */
+    background: repeating-linear-gradient(
+        to bottom,
+        #1a1a1a,
+        #1a1a1a 20px,
+        #2a2a2a 20px,
+        #2a2a2a 21px
+    );
+    overflow-y: auto;
+}
+
+/* CATEGORIA DE LINKS */
+.link-category h2 {
+    font-size: 0.9em;
+    color: var(--primary-glow);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font-family: var(--text-mono);
+}
+
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+    gap: 10px 20px;
+}
+
+.link-list li {
+    /* Faz os links ocuparem aproximadamente 50% da largura, permitindo dois por linha */
+    flex: 1 1 calc(50% - 20px); 
+    max-width: calc(50% - 10px);
+}
+
+.link-list a {
+    text-decoration: none;
+    color: var(--primary-glow);
+    background-color: #252525;
+    padding: 8px 15px;
+    display: block;
+    border-left: 3px solid var(--primary-glow);
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+/* Efeito de destaque (holográfico) */
+.link-list a:hover {
+    background-color: var(--secondary-blue);
+    color: var(--bg-dark);
+    /* Sutil brilho quando passa o mouse */
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.7); 
+    border-left-color: var(--bg-dark);
+}
+
+/* FOOTER (Barra de Status) */
+.lab-footer {
+    background-color: var(--bg-dark);
+    padding: 10px 20px;
+    border-top: 2px solid var(--secondary-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7em;
+    text-transform: uppercase;
+}
+
+.lab-footer p {
+    margin: 0;
+    opacity: 0.7; /* Texto menos intenso */
+}
+
+/* Responsividade: Links em coluna única em telas pequenas */
+@media (max-width: 600px) {
+    .link-list li {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
